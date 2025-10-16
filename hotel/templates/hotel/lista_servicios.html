@@ -1,0 +1,37 @@
+{% extends "hotel/Servicios.html" %}
+
+
+{% block content %}
+
+<h1>servicios del hotel</h1>
+{% if servicio %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in servicio %}
+            <tr>
+                <td>{{ s.nombre }}</td>
+                <td>{{ s.tipo }}</td>
+                <td>{{ s.descripcion }}</td>
+                <td>{{ s.precio }}</td>
+                <td> 
+                    <a class="btn btn-danger" href="{% url 'eliminar_servicio' s.id %}">Eliminar</a> 
+                    <a class="btn btn-secondary" href="{% url 'modificar_servicio' s.id %}">Modificar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h3>No hay servicios </h3>
+{% endif %}
+
+{% endblock  %}

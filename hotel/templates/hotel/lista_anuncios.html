@@ -1,0 +1,30 @@
+{% extends "hotel/anuncios.html" %}
+
+{% block content %}
+
+<h1>Anuncios</h1>
+<div class="container">
+    <div class="row">
+        {% for a in anuncios %}
+        <div class="col-md-4">
+            <div class="card" style="margin-bottom: 20px;">
+                {% if a.imagen %}
+                <img class="card-img-top" src="{{ a.imagen.url }}" style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ a.titulo }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ a.tipo }}</h6>
+                    <p class="card-text">{{ a.descripcion }}</p>
+                    {% if request.user.usuario.rol.nombre == 'Administrador' %}
+                    <a href="{% url 'modificar_anuncio' a.id %}" class="btn btn-primary">modificar</a>
+                    <a href="{% url 'eliminar_anuncio' a.id %}" class="btn btn-danger">Eliminar</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock  %}

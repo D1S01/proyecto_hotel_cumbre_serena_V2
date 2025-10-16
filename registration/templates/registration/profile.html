@@ -1,0 +1,19 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+
+{% if usuario %}
+
+<h1>Perfil de {{ usuario.nombre_completo }}</h1> 
+<p><strong>Nombre de Usuario:</strong> {{ usuario.user.username }}</p> 
+<p><strong>Correo Electrónico:</strong> {{ usuario.correo }}</p> 
+<p><strong>Nacionalidad:</strong> {{ usuario.nacionalidad }}</p> 
+<p><strong>RUT:</strong> {{ usuario.rut }}</p> 
+<p><strong>Fecha de Nacimiento:</strong> {{ usuario.fecha_nacimiento }}</p> 
+<p><strong>Número Telefónico:</strong> {{ usuario.numero_telefonico }}</p>
+
+<a class="btn btn-primary" href="{% url 'editar_perfil_usuario' usuario.id %}" type="submit">Editar Perfil</a> 
+
+{% endif %}
+
+{% endblock %}

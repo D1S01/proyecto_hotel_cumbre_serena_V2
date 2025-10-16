@@ -1,0 +1,16 @@
+{% extends "hotel/Servicios.html" %}
+
+
+{% block content %}
+
+{% if servicio %}
+<h2>confirmar eliminacion</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Esta seguro que desea eliminar el servicio {{servicio.nombre}}?</p>
+    <button class="btn btn-danger">eliminar</button>
+    <a class="btn btn-secondary" href="{% url "listaServicios" %}">volver</a>
+</form>
+{% endif %}
+
+{% endblock  %}

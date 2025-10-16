@@ -1,0 +1,24 @@
+{% extends "hotel/base.html" %}
+
+
+{% block content %}
+
+{% if habitacion %}
+<h2>confirmar eliminar</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Esta seguro que desea eliminar la habitacion {{habitacion.num_habitacion}}?</p>
+    <button class="btn btn-primary">eliminar</button>
+    <a href="{% url "listaHabitaciones" %}">volver</a>
+</form>
+
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'listaHabitaciones' %}"; 
+        } 
+    }; 
+</script>
+{% endif %}
+
+{% endblock  %}

@@ -1,0 +1,38 @@
+{% extends "hotel/RoomService.html" %}
+
+
+{% block content %}
+
+<h1>solicitudes del dia</h1>
+
+{% if solicitud %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Habitacion</th>
+                <th>Servicio</th>
+                <th>Precio</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in solicitud %}
+            <tr>
+                <td>{{ s.reserva.habitacion.num_habitacion }}</td>
+                <td>{{ s.servicio.nombre }}</td>
+                <td>{{ s.precio_total }}</td>
+                <td>{{ s.fecha|date:"d/m/Y H:i" }}</td>
+                <td> 
+                    <a class="btn btn-danger" href="{% url 'eliminar_Solicitud' s.id %}">Eliminar</a> 
+                    <a class="btn btn-secondary" href="{% url 'modificar_Solicitud' s.id %}">Modificar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h3>No hay solicitudes </h3>
+{% endif %}
+
+{% endblock  %}

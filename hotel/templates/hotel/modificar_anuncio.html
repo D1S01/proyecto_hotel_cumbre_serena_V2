@@ -1,0 +1,20 @@
+{% extends "hotel/anuncios.html" %}
+
+{% block content %}
+
+<h1>Editar Anuncio</h1>
+<form method="post" enctype="multipart/form-data"> 
+    {% csrf_token %} 
+    {{ form.as_p }} 
+    <button class="btn btn-primary" type="submit">Guardar</button> 
+    <a href="{% url 'lista_anuncios' %}" class="btn btn-secondary">Volver</a>
+</form>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'lista_anuncios' %}"; 
+        } 
+    }; 
+</script>
+
+{% endblock  %}

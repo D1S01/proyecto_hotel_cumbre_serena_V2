@@ -1,0 +1,19 @@
+{% extends "hotel/RoomService.html" %}
+
+{% block content %}
+
+
+<h2>¿Estas seguro de que deseas eliminar esta solicitud?</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <p>Habitacion:{{ solicitud.reserva.habitacion.num_habitacion }}</p>
+  <p>Servicio: {{ solicitud.servicio.nombre }}</p>
+  <p>Precio: ${{ solicitud.precio_total }}</p>
+
+  <button type="submit" class="btn btn-danger">Eliminar</button>
+  <a href="{% url 'listaSolicitudes' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+
+{% endblock  %}

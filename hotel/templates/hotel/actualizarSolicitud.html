@@ -1,0 +1,14 @@
+{% extends "hotel/RoomService.html" %}
+
+{% block content %}
+
+<h2>Actualizar solicitud</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Guardar cambios</button>
+  <a href="{% url 'listaSolicitudes' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+
+{% endblock  %}
