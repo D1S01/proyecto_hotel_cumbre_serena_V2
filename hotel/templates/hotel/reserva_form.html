@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {% extends "hotel/base.html" %} 
 {% load widget_tweaks %}  
 {% block content %}
@@ -66,38 +65,5 @@
         } 
     }; 
 </script>
-=======
-{% extends "hotel/reservas.html" %}
-
-{% block content %}
-
-    {% if form.errors %} 
-        <div class="alert alert-primary"> 
-            {% if fechas_disponibles %} 
-                <h4>Fechas disponibles:</h4> 
-                <ul> 
-                    {% for inicio, fin in fechas_disponibles %} 
-                        <li>Desde {{ inicio }} {% if fin %}hasta {{ fin }}{% else %}en adelante{% endif %}</li> 
-                    {% endfor %} 
-                </ul> 
-            {% endif %} 
-        </div> 
-    {% endif %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        
-        <button class="btn btn-primary" type='submit'>pagar</button>
-        <a href="{% url 'listaHabitaciones' %}">Volver</a>
-    </form>
-    
-    <script> 
-        window.onload = function() { 
-            if (performance.navigation.type === 2) { 
-                window.location.href = "{% url 'listaReservas' %}"; 
-            } 
-        }; 
-    </script>
->>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
     
 {% endblock %}

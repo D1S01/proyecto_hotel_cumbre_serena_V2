@@ -1,8 +1,5 @@
 from django.shortcuts import redirect, render
-<<<<<<< HEAD
 from django.views.generic import TemplateView
-=======
->>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
 from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
@@ -34,12 +31,9 @@ class HabiacionListView(ListView):
     template_name = 'hotel/list_habitacion.html'
     context_object_name = 'habitacion'
 
-<<<<<<< HEAD
 class HomeTemplateView(TemplateView):
     template_name = 'hotel/base.html'
 
-=======
->>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
 @method_decorator(cache_control(no_cache=True, must_revalidate=True, no_store=True), name='dispatch')
 # @method_decorator(user_passes_test(es_administrador), name='dispatch')
 class HabiacionCreateView(CreateView):

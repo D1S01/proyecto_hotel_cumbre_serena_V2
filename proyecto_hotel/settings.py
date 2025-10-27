@@ -40,12 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hotel',
-<<<<<<< HEAD
     'registration',
-    'widget_tweaks'
-=======
-    'registration'
->>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -85,19 +81,13 @@ WSGI_APPLICATION = 'proyecto_hotel.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hotel_cumbre_serena',
-        'USER': 'root',
-        'PASSWORD': 'maisql_r00t01',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
     }
 }
 
-<<<<<<< HEAD
 STATIC_URL = '/static/'
-=======
->>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

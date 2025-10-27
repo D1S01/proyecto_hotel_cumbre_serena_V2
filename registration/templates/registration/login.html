@@ -1,7 +1,6 @@
 {% extends 'hotel/base.html' %}
 
 {% block content %}
-<<<<<<< HEAD
 <div class="container mt-5">
     
     <div class="row justify-content-center">
@@ -50,26 +49,4 @@
         margin: 1rem !important;
     }
 </style>
-=======
-<h2 class="text-center">Login</h2>
-<div class="login-div">
-        <form method="post">
-            {% csrf_token %}
-            <p>
-                <label>Nombre de usuario</label>
-                <input type="text" name="username" class="form-control" required>
-            </p>
-            <p>
-                <label>Contraseña</label>
-                <input type="password" name="password" class="form-control" required>
-            </p>
-            {% if form.non_field_errors %}
-            <p class="text-danger">el nombre de usuario o la contraseña no coinciden, reintente</p>
-            {% endif %}
-            <p><a style="text-decoration: none" href="{% url 'signup' %}">Registrate aqui!</a></p>
-            <input type="submit" class="btn btn-success" value="Acceder">
-            <a href="{% url 'listaHabitaciones' %}" class="btn btn-dark">Volver</a>
-    </form>
-</div>
->>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
 {% endblock %}
