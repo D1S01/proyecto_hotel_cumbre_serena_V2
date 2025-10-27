@@ -8,6 +8,7 @@
     <title>Hotel Cumbre Serena</title>
 </head>
 <style>
+<<<<<<< HEAD
     /* ------------------------------------ */
     /* ESTILOS RESTAURADOS (Morados)        */
     /* ------------------------------------ */
@@ -49,10 +50,19 @@
     /* Sidebar */
     .sidebar {
         background-color: #F7F3FF; /* lila muy claro */
+=======
+
+    .max-main-content{
+        display: flex;
+    }
+    .sidebar {
+        background-color: #fdfdfd;
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
         padding: 20px;
         width: 200px;
         border-radius: 10px;
         margin-right: 20px;
+<<<<<<< HEAD
         box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Sombra suave */
     }
 
@@ -157,6 +167,99 @@
             {% if request.user.usuario.rol.nombre == 'Recepcionista' %}
                 <div class="nav">
                     <a class="navbar-brand" href="{% url 'listaReservas' %}">Reservas</a>
+=======
+    }
+    .sidebar h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    .sidebar button {
+        background-color: #3366cc;
+        border: none;
+        color: white;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+    .filter-section input {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    .main-content {
+        display: flex;
+        flex: 1;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 20px;
+
+    }
+    body{
+        background-color: #F0F3F8;
+    }
+
+    .header{
+        /* display: flex; */
+        width: 100%;
+        
+    }
+    .titulo{
+        width: 30rem;
+    }
+    nav{
+         background-color: #3366cc;
+    }
+    .navbar-text{
+        /* width: 30rem; */
+        justify-content: flex-end;
+    }
+
+    .boton{
+        color: rgb(237, 242, 245);
+        text-decoration: none;
+    }
+    .max-main-content{
+        margin-left: 1rem;
+    }
+    .detail-room{
+        margin-left: -6rem;
+    }
+    .btn{
+        margin-bottom: 0.5rem;
+    }
+</style>
+<body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+        <div class="header">
+            <h1 class='titulo'>Hotel Cumbre Serena</h1>
+            {% if request.user.is_superuser or request.user.usuario.rol.nombre == 'Administrador' %}
+                <div class="nav">
+                    <p class="navbar-brand">{{ request.user.username }}</p>
+                    <p class="navbar-brand">{{ request.user.usuario.rol }}</p>
+                </div>
+            {% elif request.user.usuario.rol.nombre == 'Recepcionista' %}
+                <div class="nav">
+                    <p class="navbar-brand">{{ request.user.username }}</p>
+                    <p class="navbar-brand">{{ request.user.usuario.rol }}</p>
+                </div>
+            {% elif request.user.usuario.rol.nombre == 'Huesped' %}
+                <div class="nav">
+                    <p class="navbar-brand">{{ request.user.username }}</p>
+                    <p class="navbar-brand">{{ request.user.usuario.rol }}</p>
+                </div>
+            {% endif %}
+
+            {% if request.user.usuario.rol.nombre == 'Recepcionista' %}
+                <div class="nav">
+                    <a class="navbar-brand" href="{% url 'listaReservas' %}">reservas</a>
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
                     <a class="navbar-brand" href="{% url 'listaConsultas' %}">Consultas</a>
                     <a class="navbar-brand" href="{% url 'listaReclamos' %}">Reclamos</a>
                     <a class="navbar-brand" href="{% url 'lista_anuncios' %}">Anuncios</a>
@@ -165,13 +268,20 @@
 
             {% if request.user.is_superuser or request.user.usuario.rol.nombre == 'Administrador' %}
                 <div class="nav">
+<<<<<<< HEAD
                     <a class="navbar-brand" href="{% url 'crearHabitacion' %}">Agregar Hab.</a>
                     <a class="navbar-brand" href="{% url 'Lista_usuarios' %}">Usuarios</a>
                     <a class="navbar-brand" href="{% url 'listaReservas' %}">Reservas</a>
+=======
+                    <a class="navbar-brand" href="{% url 'crearHabitacion' %}">Agregar Habitacion</a>
+                    <a class="navbar-brand" href="{% url 'Lista_usuarios' %}">Usuarios</a>
+                    <a class="navbar-brand" href="{% url 'listaReservas' %}">reservas</a>
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
                     <a class="navbar-brand" href="{% url 'listaConsultas' %}">Consultas</a>
                     <a class="navbar-brand" href="{% url 'listaReclamos' %}">Reclamos</a>
                     <a class="navbar-brand" href="{% url 'lista_anuncios' %}">Anuncios</a>
                     <a class="navbar-brand" href="{% url 'listaServicios' %}">Servicios</a>
+<<<<<<< HEAD
                     <a class="navbar-brand" href="{% url 'crear_servicio' %}">Crear Serv.</a>
                 </div>
             {% endif %}
@@ -194,10 +304,35 @@
                         {% csrf_token %}
                         <button class="btn btn-light" type="submit">Logout</button>
                     </form>
+=======
+                    <a class="navbar-brand" href="{% url 'crear_servicio' %}">Crear Servicio</a>
+                </div>
+            {% endif %}
+            {% if request.user.usuario.rol.nombre == 'Huesped' %}
+                <a class="navbar-brand" href="{% url 'listaReservas' %}">Mis reservas</a>
+                <a class="navbar-brand" href="{% url 'listaConsultas' %}">Consultas</a>
+                <a class="navbar-brand" href="{% url 'listaReclamos' %}">Reclamos</a>
+                <a class="navbar-brand" href="{% url 'lista_anuncios' %}">Anuncios</a>
+            {% endif %}
+            
+            
+            <div class="nav">
+                <a class="navbar-brand" href="{% url 'listaHabitaciones' %}">Inicio</a>
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-light" type="submit">logout</i></button>
+                    </form>
+                   
+                    <a class="navbar-brand" href="{% url 'perfil' %}">perfil</a>
+
+                    
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
                 {% else %}
                     <a class="navbar-brand" href="{% url 'login' %}">Login</a>
                     <a class="navbar-brand" href="{% url 'signup' %}">Registrate</a>
                 {% endif %}
+<<<<<<< HEAD
             </div>
         </div>
     </nav>
@@ -230,5 +365,25 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+=======
+                
+            </div>
+        </div>
+    </nav>
+    <div class="max-main-content">
+        <div class="main-content">
+            <div class="sidebar">
+                <h3>Menú</h3>
+                <a class="btn btn-primary" href="{% url 'listaHabitaciones' %}">Ver Habitaciones</a>
+            </div>
+        </div>
+
+        <div>
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+    </div>
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
 </body>
 </html>

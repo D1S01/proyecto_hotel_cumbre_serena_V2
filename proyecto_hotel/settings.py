@@ -40,8 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hotel',
+<<<<<<< HEAD
     'registration',
     'widget_tweaks'
+=======
+    'registration'
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
 ]
 
 MIDDLEWARE = [
@@ -90,7 +94,10 @@ DATABASES = {
     }
 }
 
+<<<<<<< HEAD
 STATIC_URL = '/static/'
+=======
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

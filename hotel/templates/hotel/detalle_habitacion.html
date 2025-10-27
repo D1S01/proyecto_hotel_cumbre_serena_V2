@@ -1,6 +1,7 @@
 {% extends "hotel/base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
     
     <div class="container mt-4">
         
@@ -47,4 +48,26 @@
             </div>
         </div>
     </div>
+=======
+    <div class='detail-room'>
+        {% if habitacion %}
+
+        {% if habitacion.imagen %}
+            <img style="height: 19rem;" src="{{ habitacion.imagen.url }}" alt="imagen de producto">
+        {% endif %}
+
+        <h2>Detalles de {{habitacion.num_habitacion}}</h2>
+
+        <div>
+            <p>Habitación: {{habitacion.num_habitacion}}</p>
+            <p>Tipo de habitacion: {{habitacion.tipo}}</p>
+            <p>Numero de camas: {{habitacion.cantidad_camas}}</p>
+            <p>Vistas de la habitación: {{habitacion.vistas}}</p>
+
+            <a class="btn btn-primary" href="{% url 'createReserva' habitacion.id %}">Reservar</a>
+        </div>
+        {% endif %}
+    </div>
+
+>>>>>>> 7716b6c7481c705a0dcd04b897689f2e2377fad9
 {% endblock %}
