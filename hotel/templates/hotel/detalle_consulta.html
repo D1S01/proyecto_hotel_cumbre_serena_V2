@@ -1,0 +1,15 @@
+{% extends "hotel/consultas.html" %}
+
+{% block content %}
+
+{% if consulta %}
+
+<h1>Detalle de Consulta</h1>
+<p><strong>Título:</strong> {{ consulta.titulo }}</p>
+<p><strong>Descripción:</strong> {{ consulta.descripcion }}</p>
+<p><strong>Respuesta:</strong> {{ consulta.respuesta|default:"Aún no hay respuesta" }}</p>
+<a class="btn btn-secondary" href="{% url 'listaConsultas' %}">Volver a la lista de consultas</a>
+
+{% endif %}
+
+{% endblock  %}

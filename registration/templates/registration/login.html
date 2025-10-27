@@ -1,0 +1,52 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    
+    <div class="row justify-content-center">
+        
+        <div class="col-md-6 col-lg-4"> 
+            
+            <h2 class="text-center mb-4">Login</h2>
+            
+            <div class="login-div p-4 shadow-sm bg-white rounded">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label">Nombre de Usuario</label>
+                        <input type="text" name="username" id="id_username" class="form-control" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">Contraseña</label>
+                        <input type="password" name="password" id="id_password" class="form-control" required>
+                    </div>
+                    
+                    {% if form.non_field_errors %}
+                    <p class="text-danger mb-3">El nombre de usuario o la contraseña no coinciden, reintente</p>
+                    {% endif %}
+                    
+                    <p class="text-center mb-3">
+                        <a style="text-decoration: none" href="{% url 'signup' %}">Si No Tienes Cuenta, ¡Regístrate Aquí!</a>
+                    </p>
+                    
+                    <input type="submit" class="btn btn-success w-100 mb-2" value="Acceder">
+                    <a href="{% url 'home' %}" class="btn btn-dark w-100">Salir</a>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-content {
+        display: none !important;
+    }
+    .max-main-content {
+        display: block !important;
+        margin: 1rem !important;
+    }
+</style>
+{% endblock %}

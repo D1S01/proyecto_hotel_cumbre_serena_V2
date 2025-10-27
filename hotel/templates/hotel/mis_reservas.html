@@ -1,0 +1,77 @@
+{% extends "hotel/reservas.html" %}
+
+{% block content %}
+<h1>Reservas del hotel</h1>
+{% if reserva %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Nombre Completo</th> 
+                <th>Correo Electronico</th> 
+                <th>Telefono</th> 
+                <th>RUT</th>
+                <th>Habitacion</th>
+                <th>Fecha de Llegada</th>
+                <th>Fecha de Salida</th>
+                <th>Huespedes Menores</th>
+                <th>Precio por noche</th>
+                <th>Total</th>
+                <th>Preferencias</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reserva %}
+            <tr>
+                <td>{{ r.numero_reserva }}</td>
+                <td>
+                    {% if r.usuario %}
+                        {{ r.usuario.nombre_completo }}
+                    {% else %}
+                        Nombre no disponible
+                    {% endif %}
+                </td>
+                <td>
+                    {% if r.usuario %}
+                        {{ r.usuario.correo }}
+                    {% else %}
+                        Correo no disponible
+                    {% endif %}
+                </td>
+                <td>
+                    {% if r.usuario %}
+                        {{ r.usuario.numero_telefonico }}
+                    {% else %}
+                        Teléfono no disponible
+                    {% endif %}
+                </td>
+                <td>
+                    {% if r.usuario %}
+                        {{ r.usuario.rut }}
+                    {% else %}
+                        RUT no disponible
+                    {% endif %}
+                </td>
+                <td>{{ r.habitacion.num_habitacion }}</td>
+                <td>{{ r.fecha_llegada }}</td>
+                <td>{{ r.fecha_salida }}</td>
+                <td>
+                    {% if r.huespedes_menores %}Si{% else %}No{% endif %}
+                </td>
+                <td>{{ r.habitacion.precio }}</td>
+                <td>{{ r.precio_total }}</td>
+                <td>{{ r.preferencias }}</td>
+                <td> 
+                    <a class="btn btn-danger" href="{% url 'eliminar_reserva' r.id %}">Eliminar</a> 
+                    <a class="btn btn-secondary" href="{% url 'modificarReserva' r.id %}">Modificar</a>
+                    <a href="{% url 'generar_pdf' r.id %}" class="btn btn-primary">Descargar Detalles de la Reserva (PDF)</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h3>No hay reservas hoy</h3>
+{% endif %}
+{% endblock %}

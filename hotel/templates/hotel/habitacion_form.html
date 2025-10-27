@@ -1,0 +1,25 @@
+{% extends "hotel/base.html" %}
+
+{% block content %}
+
+<div style="width: 40rem;">
+    <h2>Crear habitacion</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+    
+        <button class="btn btn-primary" type="submit">crear</button>
+        <a href="{% url "listaHabitaciones" %}">volver</a>
+    </form>
+</div>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'listaHabitaciones' %}"; 
+        } 
+    }; 
+</script>
+
+
+{% endblock %}

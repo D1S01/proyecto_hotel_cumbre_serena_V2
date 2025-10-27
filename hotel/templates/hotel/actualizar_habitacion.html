@@ -1,0 +1,21 @@
+{% extends "hotel/base.html" %}
+
+{% block content %}
+
+<h2>modificar habitacion</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button class="btn btn-primary" type="submit">actualizar</button>
+    <a href="{% url 'listaHabitaciones' %}" class="btn btn-secondary">Volver</a>
+</form>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'listaHabitaciones' %}"; 
+        } 
+    }; 
+</script>
+
+{% endblock  %}

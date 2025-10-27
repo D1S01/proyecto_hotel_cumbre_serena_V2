@@ -1,0 +1,14 @@
+{% extends "hotel/RoomService.html" %}
+
+{% block content %}
+
+<h2>Registrar solicitud</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success">Guardar solicitud</button>
+  <a href="{% url 'listaServicios' %}" class="btn btn-secondary">Volver</a>
+</form>
+
+{% endblock  %}

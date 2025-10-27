@@ -1,0 +1,89 @@
+{% extends "hotel/base.html" %}
+
+{% block content %}
+
+<style>
+    /* Usamos flexbox para centrar horizontalmente el conjunto de tarjetas */
+    .habitaciones-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* ¡Centra las tarjetas! */
+        margin-top: 1rem;
+    }
+    /* Estilo para dar espacio uniforme a cada tarjeta */
+    .card-wrapper {
+        margin: 1rem; /* Espacio alrededor de cada tarjeta */
+    }
+</style>
+
+{% if habitacion %}
+
+<h2 class="text-center mt-4 mb-4">Lista de Habitaciones</h2>
+
+<div class="habitaciones-grid">
+
+{% for h in habitacion %}
+
+<div class="card-wrapper">
+    <div class="card" style="width: 25rem;">
+        {% if h.imagen %}
+            <img class="card-img-top" style="height: 19rem;" src="{{ h.imagen.url }}" alt="Imagen de habitación">
+        {% endif %}
+        
+        <div class="card-body">
+            <h5 class="card-title text-primary mb-3">Habitación {{ h.num_habitacion }} - {{ h.tipo }}</h5>
+            
+            <div class="row">
+                
+                <div class="col-6">
+                    <p class="card-text mb-2">
+                        <small class="text-muted d-block">Precio:</small> 
+                        <strong>${{ h.precio }}</strong>
+                    </p>
+                    <p class="card-text mb-2">
+                        <small class="text-muted d-block">Cantidad de Camas:</small> 
+                        {{ h.cantidad_camas }}
+                    </p>
+                </div>
+                
+                <div class="col-6">
+                    <p class="card-text mb-2">
+                        <small class="text-muted d-block">Tipo de Cama:</small> 
+                        {{ h.camas }}
+                    </p>
+                    <p class="card-text mb-2">
+                        <small class="text-muted d-block">Ubicación:</small> 
+                        {{ h.ubicacion }}
+                    </p>
+                </div>
+            </div>
+            
+            <hr class="my-3">
+            <p class="card-text mb-3">
+                <small class="text-muted d-block">Vistas:</small>
+                {{ h.vistas }}
+            </p>
+            
+            <div class="d-grid gap-2 mt-3">
+                
+                {% if request.user.is_superuser or request.user.usuario.rol.nombre == 'Administrador' %}
+                    <a class="btn btn-primary" href="{% url 'actualizarHabitacion' h.id %}">Actualizar</a>
+                    <a class="btn btn-danger" href="{% url 'eliminarHabitacion' h.id %}">Eliminar</a>
+                {% endif %}
+                
+                {% if request.user.is_authenticated and request.user.usuario.rol.nombre != 'Administrador' or not user.is_authenticated %}
+                    <a class="btn btn-secondary" href="{% url 'detailRoom' h.id %}">Ver Habitación</a>
+                    <a class="btn btn-success" href="{% url 'createReserva' h.id %}">Reservar Habitación</a>
+                {% endif %}
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+</div> {% endif %}
+
+{% endblock %}

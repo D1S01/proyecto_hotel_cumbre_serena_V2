@@ -1,0 +1,57 @@
+{% extends "hotel/usuarios.html" %}
+
+{% block content %}
+
+<h2>lista usuarios</h2>
+
+{% if usuario %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">nombre de usuario</th>
+            <th scope="col">nacionalidad</th>
+            <th scope="col">rut</th>
+            <th scope="col">fecha de nacimiento</th>
+            <th scope="col">nombre completo</th>
+            <th scope="col">telefono</th>
+            <th scope="col">correo</th>
+            <th scope="col">rol</th>
+            <th scope="col">modificar</th>
+            <th scope="col">estado</th>
+        </tr>
+    </thead>
+    {% for u in usuario %}
+    <tbody>
+        <tr>
+            <td scope="row">{{u.user.username}}</td>
+            <td>{{u.nacionalidad}}</td>
+            <td>{{u.rut}}</td>
+            <td>{{u.fecha_nacimiento}}</td>
+            <td>{{u.nombre_completo}}</td>
+            <td>{{u.numero_telefonico}}</td>
+            <td>{{u.correo}}</td>
+            <td>{{u.rol}}</td>
+            <td>
+                <a href="{% url 'editar_usuario_admin' u.id %}">modificar</a>
+            </td>
+            {% if request.user.is_superuser or request.user.usuario.rol.nombre == 'Administrador' %}
+                {% if not u.user.is_active %} 
+                <td>
+                    <a href="{% url 'habilitar_usuario' u.id %}">Habilitar</a>
+                </td> 
+                {% else %} 
+                <td>
+                    <a href="{% url 'deshabilitar_usuario' u.id %}">Deshabilitar</a>
+                </td> 
+                {% endif %}
+            {% endif %}
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+
+{% endblock  %}

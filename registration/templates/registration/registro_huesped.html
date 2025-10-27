@@ -1,0 +1,55 @@
+{% extends "hotel/base.html" %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<div class="container mt-5">
+    
+    <div class="row justify-content-center">
+        
+        <div class="col-md-7 col-lg-5"> 
+            
+            <h1 class="text-center mb-4">Regístrate</h1> 
+            
+            <div class="p-4 shadow-sm bg-white rounded">
+                <form method="post"> 
+                    {% csrf_token %} 
+                    
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                            {{ field|add_class:"form-control" }}
+                            {% for error in field.errors %}
+                                <div class="text-danger small">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <button type="submit" class="btn btn-success w-100 mt-3">Registrarse</button> 
+                    <a href="{% url 'login' %}" class="btn btn-link d-block text-center mt-2">¿Ya tienes cuenta? Inicia Sesión</a>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Oculta el sidebar y el espacio que ocupa */
+    .main-content {
+        display: none !important;
+    }
+    /* Permite que el contenedor de contenido ocupe todo el ancho */
+    .max-main-content {
+        display: block !important;
+        margin: 1rem !important;
+    }
+</style>
+
+{% endblock %}

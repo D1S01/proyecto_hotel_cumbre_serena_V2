@@ -1,0 +1,21 @@
+{% extends "hotel/consultas.html" %}
+
+{% block content %}
+
+<h1>Responder Consulta: {{ consulta.titulo }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Enviar Respuesta</button>
+    <a class="btn btn-secondary" href="{% url 'listaConsultas' %}">Volver a la lista de consultas</a>
+
+</form>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock  %}

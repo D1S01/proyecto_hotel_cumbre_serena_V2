@@ -1,0 +1,22 @@
+{% extends "hotel/usuarios.html" %}
+
+
+{% block content %}
+
+<h2>Crear usuario</h2>
+<form method="post"> 
+    {% csrf_token %} 
+    {{ form.as_p }}
+
+    <button class="btn btn-primary" type="submit">Registrar</button> 
+    <a class="btn btn-secondary" href="{% url "Lista_usuarios" %}">volver</a>
+</form>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'Lista_usuarios' %}"; 
+        } 
+    }; 
+</script>
+
+{% endblock  %}

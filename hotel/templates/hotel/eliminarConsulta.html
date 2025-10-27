@@ -1,0 +1,24 @@
+{% extends "hotel/base.html" %}
+
+
+{% block content %}
+
+{% if consulta %}
+<h2>confirmar eliminacion</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Esta seguro que desea eliminar la consulta {{consulta.titulo}}?</p>
+    <button class="btn btn-danger">eliminar</button>
+    <a class="btn btn-secondary" href="{% url "listaConsultas" %}">volver</a>
+</form>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'listaConsultas' %}"; 
+        } 
+    }; 
+</script>
+
+{% endif %}
+
+{% endblock  %}

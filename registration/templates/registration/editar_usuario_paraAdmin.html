@@ -1,0 +1,22 @@
+{% extends "hotel/usuarios.html" %}
+
+
+{% block content %}
+
+<h1>Editar Perfil de {{ form.instance.nombre_completo }}</h1>
+<form method="post"> 
+    {% csrf_token %} 
+    {{ form.as_p }}
+
+    <button class="btn btn-primary" type="submit">Guardar Cambios</button> 
+    <a href="{% url 'Lista_usuarios' %}" class="btn btn-secondary">Volver</a>
+</form>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'Lista_usuarios' %}"; 
+        } 
+    }; 
+</script>
+
+{% endblock  %}

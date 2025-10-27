@@ -1,0 +1,86 @@
+{% extends 'hotel/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    
+    <div class="row justify-content-center">
+        
+        <div class="col-md-9 col-lg-7"> 
+            
+            {% if usuario %}
+            
+            <h1 class="text-center mb-4">Perfil de Usuario</h1>
+            
+            <div class="card shadow-lg border-0">
+                
+                <div class="card-header text-white text-center py-3" style="background-color: #B39DDB;">
+                    <h4 class="mb-0">{{ usuario.nombre_completo }}</h4>
+                </div>
+                
+                <div class="card-body p-4">
+                    
+                    <div class="row">
+                        
+                        <div class="col-sm-6">
+                            <p class="mb-2">
+                                <strong class="text-muted d-block">Nombre de Usuario:</strong>
+                                **{{ usuario.user.username }}**
+                            </p>
+                            <p class="mb-2">
+                                <strong class="text-muted d-block">Correo Electrónico:</strong>
+                                {{ usuario.correo }}
+                            </p>
+                            <p class="mb-2">
+                                <strong class="text-muted d-block">RUT:</strong>
+                                {{ usuario.rut }}
+                            </p>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <p class="mb-2">
+                                <strong class="text-muted d-block">Nacionalidad:</strong>
+                                {{ usuario.nacionalidad }}
+                            </p>
+                            <p class="mb-2">
+                                <strong class="text-muted d-block">Fecha de Nacimiento:</strong>
+                                {{ usuario.fecha_nacimiento }}
+                            </p>
+                            <p class="mb-2">
+                                <strong class="text-muted d-block">Número Telefónico:</strong>
+                                {{ usuario.numero_telefonico }}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-warning btn-lg" href="{% url 'editar_perfil_usuario' usuario.id %}">
+                            Editar Perfil
+                        </a>
+                        
+                        <a class="btn btn-secondary btn-lg" href="{% url 'listaHabitaciones' %}">
+                            Volver a la Lista
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            {% endif %}
+            
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-content {
+        display: none !important;
+    }
+    .max-main-content {
+        display: block !important;
+        margin: 1rem !important;
+    }
+</style>
+
+{% endblock %}

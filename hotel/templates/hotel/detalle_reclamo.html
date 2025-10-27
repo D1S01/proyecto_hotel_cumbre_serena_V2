@@ -1,0 +1,16 @@
+{% extends "hotel/reclamos.html" %} 
+    
+{% block content %}
+
+{% if reclamo %}
+
+<h1>Detalle de Reclamo</h1>
+<p><strong>Título:</strong> {{ reclamo.titulo }}</p>
+<p><strong>Descripción:</strong> {{ reclamo.descripcion }}</p>
+<p><strong>Respuesta:</strong> {{ reclamo.respuesta|default:"Aún no hay respuesta" }}</p>
+<a class="btn btn-secondary" href="{% url 'listaReclamos' %}">Volver a la lista de reclamos</a>
+
+{% endif %}
+
+
+{% endblock  %}

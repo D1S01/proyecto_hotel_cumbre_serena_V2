@@ -1,0 +1,31 @@
+{% extends "hotel/reservas.html" %}
+
+{% block content %}
+
+    {% if form.errors %} 
+        <div class="alert alert-primary"> 
+            {% if fechas_disponibles %} 
+                <h4>Fechas disponibles:</h4> 
+                <ul> 
+                    {% for inicio, fin in fechas_disponibles %} 
+                        <li>Desde {{ inicio }} {% if fin %}hasta {{ fin }}{% else %}en adelante{% endif %}</li> 
+                    {% endfor %} 
+                </ul> 
+            {% endif %} 
+        </div> 
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type='submit'>modificar reserva</button>
+        <a href="{% url 'listaReservas' %}">Volver</a>
+    </form>
+    <script> 
+        window.onload = function() { 
+            if (performance.navigation.type === 2) { 
+                window.location.href = "{% url 'listaReservas' %}"; 
+            } 
+        }; 
+    </script>
+    
+{% endblock %}

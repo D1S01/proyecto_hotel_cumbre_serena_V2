@@ -1,0 +1,20 @@
+{% extends "hotel/reservas.html" %}
+
+{% block content %}
+
+<h1>Pago para la Reserva #{{ reserva.numero_reserva }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">Hacer Pago</button>
+</form>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'listaReservas' %}"; 
+        } 
+    }; 
+</script>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "hotel/reservas.html" %}
+
+{% block content %}
+  <h2>Confirmar eliminación de la reserva</h2>
+  <p>¿Estás seguro de que deseas eliminar la reserva para la habitación {{ reserva.habitacion.num_habitacion }} del {{ reserva.fecha_llegada }} al {{ reserva.fecha_salida }}?</p>
+  <form method="post">{% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'listaReservas' %}" class="btn btn-secondary">Cancelar</a>
+  </form>
+  <script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'listaReservas' %}"; 
+        } 
+    }; 
+  </script>
+  
+{% endblock %}

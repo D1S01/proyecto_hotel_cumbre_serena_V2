@@ -1,0 +1,20 @@
+{% extends "hotel/anuncios.html" %}
+
+{% block content %}
+
+<h1>Eliminar Anuncio</h1> 
+<p>¿Está seguro que desea eliminar el anuncio "{{ anuncio.titulo }}"?</p> 
+<form method="post"> 
+    {% csrf_token %} 
+    <button class="btn btn-danger" type="submit">Eliminar</button> 
+    <a class="btn btn-secondary" href="{% url 'lista_anuncios' %}">Cancelar</a>
+</form> 
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'lista_anuncios' %}"; 
+        } 
+    }; 
+</script>
+
+{% endblock  %}

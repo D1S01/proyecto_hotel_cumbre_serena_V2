@@ -1,0 +1,24 @@
+{% extends "hotel/base.html" %}
+
+
+{% block content %}
+
+{% if reclamo %}
+<h2>confirmar eliminacion</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Esta seguro que desea eliminar el reclamo{{reclamo.titulo}}?</p>
+    <button class="btn btn-danger">eliminar</button>
+    <a class="btn btn-secondary" href="{% url "listaReclamos" %}">volver</a>
+</form>
+<script> 
+    window.onload = function() { 
+        if (performance.navigation.type === 2) { 
+            window.location.href = "{% url 'listaReclamos' %}"; 
+        } 
+    }; 
+</script>
+
+{% endif %}
+
+{% endblock  %}

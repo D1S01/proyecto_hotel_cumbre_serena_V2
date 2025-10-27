@@ -1,0 +1,34 @@
+{% extends "hotel/reclamos.html" %}
+
+{% block content %}
+<h2>Lista Reclamos</h2>
+
+{% if reclamo %}
+
+{% for r in reclamo %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ r.titulo }}</h5>
+    <h6>
+      {% if request.user.usuario %}
+        {{ request.user.usuario.nombre_completo }}
+      {% else %}
+        Nombre no disponible
+      {% endif %}
+    </h6>
+    <p class="card-text">{{ r.descripcion }}</p>
+    <a href="{% url 'eliminarReclamo' r.id %}" class="card-link">eliminar</a>
+    <a href="{% url 'modificarReclamo' r.id %}" class="card-link">modificar</a>
+    <a href="{% url 'detalleReclamo' r.id %}">Ver Detalles</a>
+    {% if request.user.usuario.rol.nombre == 'Administrador' or request.user.usuario.rol.nombre == 'Recepcionista' %}
+      <a href="{% url 'responderReclamo' r.id %}">Responder</a>
+    {% endif %}
+  </div>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock  %}
